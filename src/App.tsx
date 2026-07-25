@@ -213,6 +213,9 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
 ],
   "Rajdeb Pal": [
   { name: "Debarshi Kar", role: "Student Volunteer", email: "", initials: "DK" },
+  { name: "Rahul Agarwal", role: "Student Volunteer", email: "", initials: "RA" },
+  { name: "Mayukh Das", role: "Student Volunteer", email: "", initials: "MD" },
+  { name: "Rajannya Paul", role: "Student Volunteer", email: "", initials: "RP" },
   { name: "Subhodeep Nandy", role: "Student Volunteer", email: "", initials: "SN" },
   { name: "Preyashi Dutta", role: "Student Volunteer", email: "", initials: "PD" },
   { name: "Sagnik Saha", role: "Student Volunteer", email: "", initials: "SS" },
@@ -223,9 +226,7 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   { name: "Rongon Das", role: "Social Media & Content", email: "", initials: "RD" },
   { name: "Purbasha Mallik", role: "Social Media & Content", email: "", initials: "PM" },
   { name: "Aritra Saha", role: "Social Media & Content", email: "", initials: "AS" },
-  { name: "Rohitaswa Singha", role: "Social Media & Content", email: "", initials: "RS" },
   { name: "Arpit Mandal", role: "Social Media & Content", email: "", initials: "AM" },
-  { name: "Ankush Sarkar", role: "Social Media & Content", email: "", initials: "AS" },
   { name: "Mahi Singh", role: "Social Media & Content", email: "", initials: "MS" },
   { name: "Srijon Iqbal", role: "Social Media & Content", email: "", initials: "SI" },
   { name: "Ritam Das", role: "Social Media & Content", email: "", initials: "RD" }
@@ -243,7 +244,8 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   { name: "Debojyoti Poddar", role: "Decoration Team", email: "", initials: "DP" },
   { name: "Maupiya Pramanik", role: "Decoration Team", email: "", initials: "MP" },
   { name: "Bidisha Dutta", role: "Decoration Team", email: "", initials: "BD" },
-  { name: "Roky Ghosh", role: "Decoration Team", email: "", initials: "RG" }
+  { name: "Roky Ghosh", role: "Decoration Team", email: "", initials: "RG" },
+  { name: "Sourjyodeep Das", role: "Decoration Team", email: "", initials: "SD" }
 ]
   
 };
@@ -655,7 +657,7 @@ export default function App() {
     },
     {
       q: 'What is the registration fee for each team?',
-      a: 'The registration fee is 400 INR per team. This fee contributes directly toward providing participants with proper food (lunch, evening snacks, dinner, late-night snacks, breakfast), Wi-Fi, and access to essential workspace supplies.'
+      a: 'Registration for this event is completely free.'
     },
     {
       q: 'Are we allowed to leave the campus before the conclusion?',
@@ -1917,10 +1919,7 @@ export default function App() {
                   <span style={{ color: '#d78cf6', fontSize: '1.2rem', marginTop: '-2px' }}>✗</span>
                   <span><strong>No Plagiarism:</strong> Do not clone existing internet projects or copy source blocks directly from online github directories.</span>
                 </li>
-                <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <span style={{ color: '#d78cf6', fontSize: '1.2rem', marginTop: '-2px' }}>✗</span>
-                  <span><strong>No Unfair Gen-AI:</strong> Avoid using automated gen-AI systems during live testing loops to synthesize entire solution structures.</span>
-                </li>
+
                 <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                   <span style={{ color: '#d78cf6', fontSize: '1.2rem', marginTop: '-2px' }}>✗</span>
                   <span><strong>No Device Tampering:</strong> Do not violate network parameters or exit key sectors without scanning clearance.</span>
@@ -2025,7 +2024,7 @@ export default function App() {
           {[
             {
               name: "Dr. Abir Chattopadhyay",
-              role: "Faculty Coordinator",
+              role: "HOD OF ECE & CSE(IOT)",
               src:hod,
               initials: "AC",
               email: "abir.chattopadhyay@uem.edu.in",
@@ -2043,7 +2042,7 @@ export default function App() {
             },
             {
               name: "Sudipta Ghosh",
-              role: "Faculty Coordinator",
+              role: "Treasurer Head",
               src:sudip,
               initials: "SN",
               email: "shreya.nag@uem.edu.in",
@@ -2095,9 +2094,9 @@ export default function App() {
                 coordinatorRole: "Faculty Integrator",
                 coordinatorAvatar: "",
                 members: [
-  { name: "Prof.(Dr.) Abir Chatterjee", role: "Faculty Integrator", email: "", initials: "AC" },
+
   { name: "Prof.(Dr.) Arpita Das", role: "Faculty Integrator", email: "", initials: "APD" },
-  { name: "Prof.(Dr.) Shreya Nag", role: "Faculty Integrator", email: "", initials: "SRN" },
+
   { name: "Prof. Debanjana Ghosh", role: "Faculty Integrator", email: "", initials: "DG" },
   { name: "Prof. Rimi Sengupta", role: "Faculty Integrator", email: "", initials: "RSG" },
   { name: "Prof. Karunamayee Dey", role: "Faculty Integrator", email: "", initials: "KD" },
@@ -2105,7 +2104,7 @@ export default function App() {
   { name: "Prof. Mandar Chakrabarti", role: "Faculty Integrator", email: "", initials: "MNC" },
   { name: "Prof.(Dr.) Maumita Das", role: "Faculty Integrator", email: "", initials: "MMD" },
   { name: "Prof.(Dr.) Ayan Chatterjee", role: "Faculty Integrator", email: "", initials: "AYC" },
-  { name: "Prof.(Dr.) Sudipta Ghosh", role: "Faculty Integrator", email: "", initials: "SGH" },
+
   { name: "Prof.(Dr.) Subhajit Das", role: "Faculty Integrator", email: "", initials: "SBD" },
   { name: "Prof. Prakash Banerjee", role: "Faculty Integrator", email: "", initials: "PB" },
   { name: "Prof.(Dr.) Rijhi Dey", role: "Faculty Integrator", email: "", initials: "RJD" },
