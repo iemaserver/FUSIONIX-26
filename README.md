@@ -72,9 +72,8 @@ cp .env.example .env
 
 | Variable | Description |
 |---|---|
-| `GEMINI_API_KEY` | Your [Google Gemini API key](https://aistudio.google.com/app/apikey) |
-| `APP_URL` | The base URL where the app will be served (e.g. `http://localhost:3000`) |
-
+| `GEMINI_API_KEY` | (Optional) Gemini API key — only needed if/when Gemini integration is enabled |
+| `APP_URL` | (Optional) Base URL for self-referential links/callbacks (currently not used in the app) |
 ### 4. Start the development server
 
 ```bash
