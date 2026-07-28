@@ -15,10 +15,7 @@ FusioniX'26 is the official interactive hub for the FusioniX hackathon — a 24-
 | Language | [TypeScript ~5.8](https://www.typescriptlang.org/) |
 | Build Tool | [Vite 6](https://vitejs.dev/) |
 | Styling | [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/vite`) |
-| Animations | [Motion](https://motion.dev/) (Framer Motion) |
-| Icons | [Lucide React](https://lucide.dev/) |
-| AI Integration | [Google Gemini API](https://ai.google.dev/) (`@google/genai`) |
-| Runtime | Node.js 24 |
+| AI Integration | (Planned) [Google Gemini API](https://ai.google.dev/) (`@google/genai`) |
 | Deployment | [Firebase Hosting](https://firebase.google.com/products/hosting) |
 
 ---
