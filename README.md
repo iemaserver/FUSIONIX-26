@@ -89,7 +89,7 @@ The app will be available at **http://localhost:3000** with hot-module replaceme
 | Script | Description |
 |---|---|
 | `npm run dev` | Start the Vite dev server on port 3000 |
-| `npm run build` | Compile TypeScript and bundle for production (output: `dist/`) |
+| `npm run build` | Bundle for production with Vite (output: `dist/`). Run `npm run lint` for TypeScript type-checking. |
 | `npm run preview` | Serve the production build locally for final checks |
 | `npm run lint` | Run TypeScript type-checking (`tsc --noEmit`) |
 | `npm run clean` | Remove build artifacts (`dist/`, `server.js`) |
