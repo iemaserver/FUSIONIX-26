@@ -5,8 +5,6 @@
 
 FusioniX'26 is the official interactive hub for the FusioniX hackathon — a 24-hour hardware and software competition where participants ideate, design, and prototype real-world sustainable tech and IoT solutions.
 
----
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -15,10 +13,7 @@ FusioniX'26 is the official interactive hub for the FusioniX hackathon — a 24-
 | Language | [TypeScript ~5.8](https://www.typescriptlang.org/) |
 | Build Tool | [Vite 6](https://vitejs.dev/) |
 | Styling | [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/vite`) |
-| AI Integration | (Planned) [Google Gemini API](https://ai.google.dev/) (`@google/genai`) |
 | Deployment | [Firebase Hosting](https://firebase.google.com/products/hosting) |
-
----
 
 ## Project Structure
 
@@ -39,8 +34,6 @@ FUSIONIX-26/
 ├── .env.example         # Environment variable template
 └── package.json
 ```
-
----
 
 ## Local Development
 
@@ -70,10 +63,6 @@ Copy the example file and fill in the required values:
 cp .env.example .env
 ```
 
-| Variable | Description |
-|---|---|
-| `GEMINI_API_KEY` | (Optional) Gemini API key — only needed if/when Gemini integration is enabled |
-| `APP_URL` | (Optional) Base URL for self-referential links/callbacks (currently not used in the app) |
 ### 4. Start the development server
 
 ```bash
@@ -81,8 +70,6 @@ npm run dev
 ```
 
 The app will be available at **http://localhost:3000** with hot-module replacement (HMR) enabled.
-
----
 
 ## Available Scripts
 
@@ -92,9 +79,7 @@ The app will be available at **http://localhost:3000** with hot-module replaceme
 | `npm run build` | Bundle for production with Vite (output: `dist/`). Run `npm run lint` for TypeScript type-checking. |
 | `npm run preview` | Serve the production build locally for final checks |
 | `npm run lint` | Run TypeScript type-checking (`tsc --noEmit`) |
-| `npm run clean` | Remove build artifacts (`dist/`, `server.js`) |
-
----
+| `npm run clean` | Remove build artifacts (`dist/`) |
 
 ## Building for Production
 
@@ -109,8 +94,6 @@ To preview the production bundle locally before deploying:
 ```bash
 npm run preview
 ```
-
----
 
 ## Deployment
 
@@ -127,8 +110,6 @@ The project is deployed to **Firebase Hosting** via GitHub Actions.
 |---|---|---|
 | `FIREBASE_TOKEN` | Secret | Firebase CI token (`firebase login:ci`) |
 | `FIREBASE_PROJECT_ID` | Variable | Firebase project ID (e.g. `fusionix-26`) |
-
----
 
 ## Features
 
