@@ -1,0 +1,82 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event_name == 'pull_request' && format('PR-{0}', github.event.number) || 'Production' }}
+      url: ${{ github.event_name == 'pull_request' && steps.deploy-preview.outputs.channel_url || format('https://{0}.web.app', vars.FIREBASE_PROJECT_ID) }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          CI: false
+
+      - name: Deploy to Firebase Hosting (Production)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          npx -y firebase-tools deploy --only hosting --project ${{ vars.FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy Preview to Firebase Hosting (PR only)
+        if: github.event_name == 'pull_request'
+        id: deploy-preview
+        run: |
+          OUTPUT=$(npx -y firebase-tools hosting:channel:deploy preview-${{ github.event.number }} --project ${{ vars.FIREBASE_PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }} --expires 30d 2>&1)
+          echo "$OUTPUT"
+          CHANNEL_URL=$(echo "$OUTPUT" | grep -oP 'Channel URL \([^)]+\): \Khttps://[^\s]+')
+          echo "channel_url=$CHANNEL_URL" >> $GITHUB_OUTPUT
+
+      - name: Comment Preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const previewUrl = '${{ steps.deploy-preview.outputs.channel_url }}';
+            const prNumber = context.payload.pull_request.number;
+            const commentBody = '## 🚀 Preview Deployment\n\n**Preview URL:** ' + previewUrl + '\n\n> This preview will expire in 30 days.';
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber
+            });
+            const existingComment = comments.find(c => c.user.login === 'github-actions[bot]' && c.body.includes('Preview Deployment'));
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: commentBody
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: commentBody
+              });
+            }
