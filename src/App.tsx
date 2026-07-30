@@ -1160,7 +1160,7 @@ export default function App() {
           {mobileMenuOpen && (
             <li style={{ marginTop: '20px' }}>
               <a 
-                href="https://unstop.com/"
+                href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cyber-solid" 
