@@ -68,7 +68,7 @@ import uem from './assets/images/UEM-BALCK.png';
 import ankan from './assets/images/souhardya.png';
 import roboninjaHeroImg from './assets/images/Bg.png';
 
-import prizesBannerImg from './assets/images/30k.jpg';
+import prizesBannerImg from './assets/images/50k.png';
 import timerBackgroun from './assets/images/timerBackgroun.jpeg';
 import foterLogo from './assets/images/foter-logo.jpeg';
 import brochurePdf from './assets/images/borocer.pdf';
@@ -1673,9 +1673,9 @@ export default function App() {
                     {
                       id: 2,
                       title: "Last Date of PPT Submission",
-                      dateStr: "Aug 15, 2026",
-                      start: new Date('2026-08-15T00:00:00'),
-                      end: new Date('2026-08-15T23:59:59')
+                      dateStr: "Aug 18, 2026",
+                      start: new Date('2026-08-18T00:00:00'),
+                      end: new Date('2026-08-18T23:59:59')
                     },
                     {
                       id: 3,
@@ -1687,9 +1687,9 @@ export default function App() {
                     {
                       id: 4,
                       title: "Finalist Team Reveal",
-                      dateStr: "Sep 5, 2026",
-                      start: new Date('2026-09-05T00:00:00'),
-                      end: new Date('2026-09-05T23:59:59')
+                      dateStr: "Aug 30, 2026",
+                      start: new Date('2026-08-30T00:00:00'),
+                      end: new Date('2026-08-30T23:59:59')
                     },
                     {
                       id: 5,
@@ -3005,7 +3005,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="https://devfolio.co/" 
+                    href="#" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
@@ -3042,7 +3042,7 @@ export default function App() {
                       </div>
                     </div>
                     <div className="btn-cyber-solid" style={{ background: 'var(--accent-blue)', borderColor: 'var(--accent-blue)', color: '#000', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
-                      <span>REGISTER</span>
+                      <span>coming soon</span>
                       <ArrowRight size={12} />
                     </div>
                   </a>
