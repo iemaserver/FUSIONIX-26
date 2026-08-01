@@ -68,7 +68,7 @@ import uem from './assets/images/UEM-BALCK.png';
 import ankan from './assets/images/souhardya.png';
 import roboninjaHeroImg from './assets/images/Bg.png';
 
-import prizesBannerImg from './assets/images/50k.png';
+import prizesBannerImg from './assets/images/50K.png';
 import timerBackgroun from './assets/images/timerBackgroun.jpeg';
 import foterLogo from './assets/images/foter-logo.jpeg';
 import brochurePdf from './assets/images/borocer.pdf';
@@ -3005,7 +3005,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="#" 
+                    href="" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
