@@ -1160,7 +1160,7 @@ export default function App() {
           {mobileMenuOpen && (
             <li style={{ marginTop: '20px' }}>
               <a 
-                href="https://unstop.com/"
+                href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cyber-solid" 
@@ -2954,7 +2954,7 @@ export default function App() {
                 <div className="flex flex-col gap-4 w-full">
                   {/* Unstop Portal Button */}
                   <a 
-                    href="https://unstop.com/" 
+                    href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card green w-full"
@@ -3005,7 +3005,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="https://devfolio.co/" 
+                    href="#" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
@@ -3042,7 +3042,7 @@ export default function App() {
                       </div>
                     </div>
                     <div className="btn-cyber-solid" style={{ background: 'var(--accent-blue)', borderColor: 'var(--accent-blue)', color: '#000', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
-                      <span>REGISTER</span>
+                      <span>coming soon</span>
                       <ArrowRight size={12} />
                     </div>
                   </a>
