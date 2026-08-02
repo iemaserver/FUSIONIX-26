@@ -2042,7 +2042,7 @@ export default function App() {
             },
             {
               name: "Sudipta Ghosh",
-              role: "Treasurer Head",
+              role: "Faculty Treasurer Head",
               src:sudip,
               initials: "SN",
               email: "shreya.nag@uem.edu.in",
