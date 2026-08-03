@@ -245,7 +245,8 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   { name: "Maupiya Pramanik", role: "Decoration Team", email: "", initials: "MP" },
   { name: "Bidisha Dutta", role: "Decoration Team", email: "", initials: "BD" },
   { name: "Roky Ghosh", role: "Decoration Team", email: "", initials: "RG" },
-  { name: "Sourjyodeep Das", role: "Decoration Team", email: "", initials: "SD" }
+  { name: "Sourjyodeep Das", role: "Decoration Team", email: "", initials: "SD" }, 
+ { name: "Ishita Dutta", role: "Decoration Team", email: "", initials: "ID" }
 ]
   
 };
