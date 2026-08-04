@@ -68,7 +68,7 @@ import uem from './assets/images/UEM-BALCK.png';
 import ankan from './assets/images/souhardya.png';
 import roboninjaHeroImg from './assets/images/Bg.png';
 
-import prizesBannerImg from './assets/images/50K Prize Pool.png';
+import prizesBannerImg from './assets/images/50K.png';
 import timerBackgroun from './assets/images/timerBackgroun.jpeg';
 import foterLogo from './assets/images/foter-logo.jpeg';
 import brochurePdf from './assets/images/borocer.pdf';
@@ -646,7 +646,7 @@ export default function App() {
     },
     {
       q: 'Who can participate in the hackathon?',
-      a: 'The hackathon is open to all undergraduate and postgraduate students from any recognized college or university, regardless of their branch or year of study.'
+      a: 'Currently, registration is open to pre-final and final year B.Tech students from the sister campuses of Institute of Engineering & Management (IEM Newtown Campus and IEM Saltlake Campus) Kolkata.'
     },
     {
       q: 'What is the maximum and minimum team size?',
@@ -1374,46 +1374,36 @@ export default function App() {
                 </p>
 
                 <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '15px' }}>
-                  <a 
-                    href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button 
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: '#1c49c2', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(28, 73, 194, 0.45)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: '#00ff66', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 255, 102, 0.45)' }}
+                    onClick={() => setShowScholarSuggestionModal(true)}
                   >
-                    <img 
-                      src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
-                      alt="Unstop" 
-                      referrerPolicy="no-referrer"
-                      style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
-                    />
-                  </a>
-                  <a 
-                    href="https://devfolio.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(55, 112, 255, 0.15)', color: '#3770FF', border: '1px solid #3770FF', borderRadius: '4px', textDecoration: 'none', cursor: 'pointer', boxShadow: '0 0 15px rgba(55, 112, 255, 0.3)' }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 619.1 129" id="devfolio" style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }}>
-                      <path fill="#ffffff" d="M156 24h33.8a52.81 52.81 0 0123.75 4.93 34.94 34.94 0 0115.26 14.3 44.35 44.35 0 015.3 22.2 45 45 0 01-5.25 22.34 34.63 34.63 0 01-15.21 14.3A53.13 53.13 0 01189.81 107H156zm31.67 65a24.59 24.59 0 0018.08-6 24.41 24.41 0 006-18.08 24.18 24.18 0 00-6-18.08A24.72 24.72 0 00187.67 41H177V89zM298 82H262a12.66 12.66 0 004.34 8.09 14.45 14.45 0 009.09 2.45 28.89 28.89 0 0016.26-5.27L297 100.9a34 34 0 01-10.45 5 42.52 42.52 0 01-12.17 1.82 38.07 38.07 0 01-17.22-3.63 26 26 0 01-11.18-10.45A31.3 31.3 0 01242 77.68a32.21 32.21 0 013.68-15.54A26.58 26.58 0 01256 51.47 29.39 29.39 0 01271 47.66a25.44 25.44 0 0119.53 8A32.07 32.07 0 01298 77zM262 72H280.2q-.68-10.31-9.09-10.31T262 72zM345.58 49h20.55l-25.91 58H322.88l-25.5-58h22l12.77 32.69zM403 50h13V65H402v42H381V65H371V50h10.71a23.35 23.35 0 018-17.86A38.06 38.06 0 01412 25.31l7.22-.45 1.2 14.87-5.56.22a19.37 19.37 0 00-9.2 2A6.74 6.74 0 00403 48zM434.43 104A26.48 26.48 0 01423.3 93.51a31.3 31.3 0 01-3.91-15.95 31 31 0 013.91-15.9A26.3 26.3 0 01434.38 51.3a40.48 40.48 0 0133.53 0A26.3 26.3 0 01479 61.66a31 31 0 013.91 15.9A31.3 31.3 0 01479 93.51 26.58 26.58 0 01467.68 104a39.75 39.75 0 01-33.43 0zm27.85-26.26q0-14.54-11.13-14.54T440 77.74q0 14.54 11.13 14.54T462.27 77.74zM492 107V24h21v83zM525 20h22V39H525zm0 86.86V49h21v58zM570.62 104a26.48 26.48 0 01-11.13-10.49 31.3 31.3 0 01-3.91-15.95 31 31 0 013.91-15.9A26.3 26.3 0 01570.57 51.3a40.48 40.48 0 0133.53 0 26.3 26.3 0 0111.08 10.36 31 31 0 013.91 15.9 31.3 31.3 0 01-3.91 15.95A26.58 26.58 0 01604 104a39.75 39.75 0 01-33.43 0zm27.85-26q0-14.54-11.13-14.54T576.21 78q0 14.54 11.13 14.54T598.42 78z"></path>
-                      <path fill="#3770ff" d="M118,70.7c.26,29.53-21.71,54.87-50.95,58.2a16.34,16.34,0,0,1-1.86.1c-5.82,0-37.28,0-48.9-.47a12.9,12.9,0,0,1-10.36-7.81,15.81,15.81,0,0,0,5.5,1.32c4,.36,11.06,0,20.69,0,10.25,0,21.33.09,26.64.14a46.78,46.78,0,0,0,8.46-.65A60.65,60.65,0,0,0,102,102.23a63.6,63.6,0,0,0,16-35.07Z"></path>
-                      <path fill="#3770ff" d="M113.34,58A58,58,0,0,1,61,116H12A14,14,0,0,1,0,102V14C0,7,5,0,12,0H62A57,57,0,0,1,113.34,58Z"></path>
-                    </svg>
-                  </a>
+                    <span>REGISTER</span>
+                    <ArrowRight size={18} />
+                  </button>
                   <a 
                     href={brochurePdf}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(255, 183, 3, 0.15)', color: '#ffb703', border: '1px solid #ffb703', borderRadius: '4px', textDecoration: 'none', boxShadow: '0 0 15px rgba(255, 183, 3, 0.3)', cursor: 'pointer' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(255, 183, 3, 0.15)', color: '#ffb703', border: '1px solid #ffb703', borderRadius: '4px', textDecoration: 'none', boxShadow: '0 0 15px rgba(255, 183, 3, 0.3)', cursor: 'pointer' }}
                   >
                     <FileText size={18} />
                     <span>EVENT BROCHURE</span>
                   </a>
+                  <a 
+                    href="#contact"
+                    className="btn-cyber-outline"
+                    onClick={(e) => handleNavClick('contact', e)}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', color: '#00ff66', border: '1px solid #00ff66', background: 'rgba(0, 255, 102, 0.05)', borderRadius: '4px', textDecoration: 'none', cursor: 'pointer' }}
+                  >
+                    <Phone size={16} />
+                    <span>CONTACT US</span>
+                  </a>
                   <button 
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)' }}
                     onClick={() => {
                       playSfx('click');
                       setGameModalOpen(true);
@@ -2990,13 +2980,21 @@ export default function App() {
                   >
                     <div className="team-card-corners" />
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <img 
-                        src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
-                        alt="Unstop" 
-                        referrerPolicy="no-referrer"
-                        style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
-                      />
+                      <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                        <circle cx="22" cy="22" r="20" fill="url(#unstop-gradient-sponsor-modal-compact)" />
+                        <path d="M14 22C14 17.5817 17.5817 14 22 14C26.4183 14 30 17.5817 30 22C30 26.4183 26.4183 30 22 30" stroke="white" strokeWidth="3" strokeLinecap="round" />
+                        <circle cx="22" cy="22" r="4" fill="#00ff66" />
+                        <defs>
+                          <linearGradient id="unstop-gradient-sponsor-modal-compact" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#0F62FE" />
+                            <stop stopColor="#0070F3" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
                       <div>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 900, color: '#fff' }}>
+                          un<span style={{ color: '#00ff66' }}>stop</span>
+                        </span>
                         <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>OFFICIAL PORTAL</div>
                       </div>
                     </div>
@@ -3033,10 +3031,9 @@ export default function App() {
                   >
                     <div className="team-card-corners" />
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 619.1 129" id="devfolio" style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }}>
-                        <path fill="#ffffff" d="M156 24h33.8a52.81 52.81 0 0123.75 4.93 34.94 34.94 0 0115.26 14.3 44.35 44.35 0 015.3 22.2 45 45 0 01-5.25 22.34 34.63 34.63 0 01-15.21 14.3A53.13 53.13 0 01189.81 107H156zm31.67 65a24.59 24.59 0 0018.08-6 24.41 24.41 0 006-18.08 24.18 24.18 0 00-6-18.08A24.72 24.72 0 00187.67 41H177V89zM298 82H262a12.66 12.66 0 004.34 8.09 14.45 14.45 0 009.09 2.45 28.89 28.89 0 0016.26-5.27L297 100.9a34 34 0 01-10.45 5 42.52 42.52 0 01-12.17 1.82 38.07 38.07 0 01-17.22-3.63 26 26 0 01-11.18-10.45A31.3 31.3 0 01242 77.68a32.21 32.21 0 013.68-15.54A26.58 26.58 0 01256 51.47 29.39 29.39 0 01271 47.66a25.44 25.44 0 0119.53 8A32.07 32.07 0 01298 77zM262 72H280.2q-.68-10.31-9.09-10.31T262 72zM345.58 49h20.55l-25.91 58H322.88l-25.5-58h22l12.77 32.69zM403 50h13V65H402v42H381V65H371V50h10.71a23.35 23.35 0 018-17.86A38.06 38.06 0 01412 25.31l7.22-.45 1.2 14.87-5.56.22a19.37 19.37 0 00-9.2 2A6.74 6.74 0 00403 48zM434.43 104A26.48 26.48 0 01423.3 93.51a31.3 31.3 0 01-3.91-15.95 31 31 0 013.91-15.9A26.3 26.3 0 01434.38 51.3a40.48 40.48 0 0133.53 0A26.3 26.3 0 01479 61.66a31 31 0 013.91 15.9A31.3 31.3 0 01479 93.51 26.58 26.58 0 01467.68 104a39.75 39.75 0 01-33.43 0zm27.85-26.26q0-14.54-11.13-14.54T440 77.74q0 14.54 11.13 14.54T462.27 77.74zM492 107V24h21v83zM525 20h22V39H525zm0 86.86V49h21v58zM570.62 104a26.48 26.48 0 01-11.13-10.49 31.3 31.3 0 01-3.91-15.95 31 31 0 013.91-15.9A26.3 26.3 0 01570.57 51.3a40.48 40.48 0 0133.53 0 26.3 26.3 0 0111.08 10.36 31 31 0 013.91 15.9 31.3 31.3 0 01-3.91 15.95A26.58 26.58 0 01604 104a39.75 39.75 0 01-33.43 0zm27.85-26q0-14.54-11.13-14.54T576.21 78q0 14.54 11.13 14.54T598.42 78z"></path>
-                        <path fill="#3770ff" d="M118,70.7c.26,29.53-21.71,54.87-50.95,58.2a16.34,16.34,0,0,1-1.86.1c-5.82,0-37.28,0-48.9-.47a12.9,12.9,0,0,1-10.36-7.81,15.81,15.81,0,0,0,5.5,1.32c4,.36,11.06,0,20.69,0,10.25,0,21.33.09,26.64.14a46.78,46.78,0,0,0,8.46-.65A60.65,60.65,0,0,0,102,102.23a63.6,63.6,0,0,0,16-35.07Z"></path>
-                        <path fill="#3770ff" d="M113.34,58A58,58,0,0,1,61,116H12A14,14,0,0,1,0,102V14C0,7,5,0,12,0H62A57,57,0,0,1,113.34,58Z"></path>
+                      <svg width="22" height="22" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                        <path d="M124.2 216.2c-5.7 3.3-10.2 8.1-13 13.9L24.8 409.8c-2.8 5.8-4.2 12.1-4.2 18.5V607c0 6.4 1.4 12.7 4.2 18.5l86.4 179.7c2.8 5.8 7.3 10.6 13 13.9l173 100.1c5.7 3.3 12.1 5 18.5 5h172.8c6.4 0 12.8-1.7 18.5-5l173-100.1c5.7-3.3 10.2-8.1 13-13.9l86.4-179.7c2.8-5.8 4.2-12.1 4.2-18.5V428.3c0-6.4-1.4-12.7-4.2-18.5l-86.4-179.7c-2.8-5.8-7.3-10.6-13-13.9l-173-100.1c-5.7-3.3-12.1-5-18.5-5H315.7c-6.4 0-12.8 1.7-18.5 5l-173 100.1z" fill="#3770FF"/>
+                        <path d="M371.4 345h164c72.4 0 131 58.6 131 131s-58.6 131-131 131h-164V345z" fill="#FFFFFF"/>
                       </svg>
                       <div>
                         <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 900, color: '#fff' }}>
