@@ -1426,12 +1426,7 @@ export default function App() {
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                      DEVFOLIO
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                      HACKATHON PLATFORM PARTNER
-                    </span>
+                 
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -1463,12 +1458,7 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                      UNSTOP
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                      OFFICIAL REGISTRATION PARTNER
-                    </span>
+                   
                   </a>
                 </div>
               </div>             </div>
@@ -2788,12 +2778,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                    DEVFOLIO
-                  </span>
-                  <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                    HACKATHON PLATFORM PARTNER
-                  </span>
+             
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2825,12 +2810,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                    UNSTOP
-                  </span>
-                  <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                    OFFICIAL REGISTRATION PARTNER
-                  </span>
+
                 </a>
               </div>
             </div>
