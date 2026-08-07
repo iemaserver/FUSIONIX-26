@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { 
   Bot, 
@@ -82,6 +82,8 @@ const targetRobotImg = shadowXImg;
 
 const footerLogoImg = foterLogo;
 const timerBgImg = timerBackgroun;
+const DEVFOLIO_HACKATHON_SLUG = 'fusionix2026';
+const DEVFOLIO_HACKATHON_URL = `https://${DEVFOLIO_HACKATHON_SLUG}.devfolio.co/`;
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
   id: string;
@@ -254,9 +256,6 @@ function playSfx(type: 'snap' | 'destroy' | 'click') {
 }
 
 const DevfolioApplyButton: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [hasIframe, setHasIframe] = useState<boolean>(false);
-
   useEffect(() => {
     let script = document.getElementById('devfolio-sdk-script') as HTMLScriptElement | null;
     if (!script) {
@@ -278,25 +277,13 @@ const DevfolioApplyButton: React.FC = () => {
       }
     };
 
-    const checkIframe = () => {
-      if (containerRef.current) {
-        const iframe = containerRef.current.querySelector('iframe');
-        if (iframe && iframe.offsetHeight > 20) {
-          setHasIframe(true);
-        }
-      }
-    };
-
     script.addEventListener('load', initDevfolio);
     initDevfolio();
 
-    const interval = setInterval(() => {
-      initDevfolio();
-      checkIframe();
-    }, 400);
+    const timer = window.setTimeout(initDevfolio, 250);
 
     return () => {
-      clearInterval(interval);
+      window.clearTimeout(timer);
       if (script) {
         script.removeEventListener('load', initDevfolio);
       }
@@ -304,51 +291,12 @@ const DevfolioApplyButton: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', height: '44px', width: '312px', minWidth: '280px', maxWidth: '100%', display: 'inline-flex', alignItems: 'center' }}>
-      {/* Devfolio Official Embed Container (Empty div required by Devfolio Integration Guidelines) */}
-      <div 
-        ref={containerRef}
-        className="apply-button" 
-        data-hackathon-slug="FusioniX2026" 
-        data-button-theme="light"
-        style={{ width: '100%', height: '44px', display: hasIframe ? 'block' : 'none' }}
-      ></div>
-
-      {/* Devfolio Official Fallback Button strictly adhering to Devfolio Branding Guidelines */}
-      {!hasIframe && (
-        <a 
-          href="https://fusionix2026.devfolio.co/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            gap: '12px', 
-            width: '100%', 
-            height: '44px', 
-            padding: '0 24px', 
-            fontSize: '1.05rem', 
-            fontWeight: 600, 
-            background: '#3770FF', 
-            color: '#ffffff', 
-            border: 'none', 
-            borderRadius: '8px', 
-            textDecoration: 'none', 
-            cursor: 'pointer', 
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-            boxShadow: '0 4px 14px rgba(55, 112, 255, 0.35)',
-            transition: 'all 0.2s ease'
-          }}
-        >
-          <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', flexShrink: 0 }}>
-            <path d="M61.3135 35.2396C61.375 42.3469 58.773 49.2195 54.0199 54.504C49.2669 59.7884 42.7073 63.1015 35.6333 63.7907C35.6333 63.7907 17.1973 64.2617 11.0968 63.7907C9.97972 63.6566 8.91805 63.229 8.01983 62.5514C7.12162 61.8738 6.41892 60.9704 5.98322 59.933C6.8414 60.3111 7.76069 60.5314 8.69703 60.5834C10.6931 60.7629 14.1022 60.8526 18.857 60.8526C25.8322 60.8526 33.4353 60.6507 33.5026 60.6507H33.6372C41.2372 60.0053 48.3045 56.4837 53.3964 50.8047C57.7637 45.9917 60.53 39.942 61.3135 33.4902V35.2396Z" fill="#ffffff"/>
-            <path d="M59.0705 28.9821C59.1254 36.0926 56.5145 42.9656 51.7527 48.2463C46.9909 53.5271 40.4236 56.8324 33.3454 57.5108C33.3454 57.5108 14.9094 57.9818 8.80896 57.5108C7.16139 57.2552 5.6632 56.4086 4.59421 55.1291C3.52523 53.8496 2.95856 52.2248 3.00006 50.558V7.11465C2.97949 5.43928 3.57252 3.81426 4.66733 2.54593C5.76215 1.27759 7.28312 0.453573 8.94353 0.229205C15.0664 -0.286643 33.4799 0.229205 33.4799 0.229205C40.5729 0.942284 47.1394 4.29323 51.8789 9.61833C56.6183 14.9434 59.185 21.8543 59.0705 28.9821Z" fill="#ffffff"/>
-          </svg>
-          <span>Apply with Devfolio</span>
-        </a>
-      )}
-    </div>
+    <div
+      className="apply-button"
+      data-hackathon-slug={DEVFOLIO_HACKATHON_SLUG}
+      data-button-theme="light"
+      style={{ height: '44px', width: '312px', maxWidth: '100%' }}
+    ></div>
   );
 };
 
@@ -380,43 +328,6 @@ export default function App() {
       bgAudio.pause();
     };
   }, [bgAudio]);
-
-  // Load Devfolio SDK script dynamically on mount and initialize reliably
-  useEffect(() => {
-    const scriptId = 'devfolio-sdk-script';
-    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
-    
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://apply.devfolio.co/v2/sdk.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-
-    const initDevfolio = () => {
-      if (typeof window !== 'undefined' && (window as any).devfolio) {
-        try {
-          (window as any).devfolio.init?.();
-        } catch (e) {
-          console.warn('Devfolio SDK initialization:', e);
-        }
-      }
-    };
-
-    script.addEventListener('load', initDevfolio);
-    
-    // Timer fallback to trigger SDK after DOM nodes are fully rendered
-    const timer = setTimeout(initDevfolio, 150);
-
-    return () => {
-      clearTimeout(timer);
-      if (script) {
-        script.removeEventListener('load', initDevfolio);
-      }
-    };
-  }, []);
 
   // Autoplay music on mount with fallback user interaction listeners to satisfy browser policies
   useEffect(() => {
@@ -1367,7 +1278,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {/* Devfolio Partner Card */}
                   <a 
-                    href="https://fusionix2026.devfolio.co/"
+                    href={DEVFOLIO_HACKATHON_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="team-member-card"
@@ -1389,7 +1300,7 @@ export default function App() {
                     <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <img 
                         src={devfolioLogo} 
-                        alt="Devfolio" 
+                        alt="DEVFOLIO LOGO" 
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
@@ -2690,7 +2601,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                 {/* Devfolio Partner Card */}
                 <a 
-                  href="https://fusionix2026.devfolio.co/"
+                  href={DEVFOLIO_HACKATHON_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-member-card"
@@ -2712,7 +2623,7 @@ export default function App() {
                   <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                     <img 
                       src={devfolioLogo} 
-                      alt="Devfolio" 
+                      alt="DEVFOLIO LOGO" 
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
@@ -3296,7 +3207,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="https://fusionix2026.devfolio.co/" 
+                    href={DEVFOLIO_HACKATHON_URL} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
@@ -3323,7 +3234,7 @@ export default function App() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <img 
                         src={devfolioLogo} 
-                        alt="Devfolio" 
+                        alt="DEVFOLIO LOGO" 
                         style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
                       />
                       <div>
