@@ -309,7 +309,7 @@ const DevfolioApplyButton: React.FC = () => {
       <div 
         ref={containerRef}
         className="apply-button" 
-        data-hackathon-slug="FusioniX2026" 
+        data-hackathon-slug="fusionix-1" 
         data-button-theme="light"
         style={{ width: '100%', height: '44px', display: 'block' }}
       ></div>
@@ -317,7 +317,7 @@ const DevfolioApplyButton: React.FC = () => {
       {/* Devfolio Official Fallback Button shown until iframe loads */}
       {!hasIframe && (
         <a 
-          href="https://fusionix2026.devfolio.co/"
+          href="https://fusionix-1.devfolio.co/"
           target="_blank"
           rel="noopener noreferrer"
           style={{ 
@@ -1351,7 +1351,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {/* Devfolio Gold Sponsor Card */}
                   <a 
-                    href="https://fusionix2026.devfolio.co/"
+                    href="https://fusionix-1.devfolio.co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="team-member-card gold"
@@ -1400,7 +1400,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {/* Devfolio Partner Card */}
                   <a 
-                    href="https://fusionix2026.devfolio.co/"
+                    href="https://fusionix-1.devfolio.co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="team-member-card"
@@ -2711,7 +2711,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                 {/* Devfolio Gold Sponsor Card */}
                 <a 
-                  href="https://fusionix2026.devfolio.co/"
+                  href="https://fusionix-1.devfolio.co/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-member-card gold"
@@ -2762,7 +2762,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                 {/* Devfolio Partner Card */}
                 <a 
-                  href="https://fusionix2026.devfolio.co/"
+                  href="https://fusionix-1.devfolio.co/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-member-card"
@@ -2951,7 +2951,7 @@ export default function App() {
         <div className="footer-bottom" style={{ flexDirection: 'column', gap: '15px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 20px', background: 'rgba(15, 23, 42, 0.85)', borderRadius: '8px', border: '1px solid rgba(55, 112, 255, 0.3)', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
             <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 700, letterSpacing: '1px' }}>OFFICIAL PLATFORM PARTNER & GOLD SPONSOR:</span>
-            <a href="https://fusionix2026.devfolio.co/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+            <a href="https://fusionix-1.devfolio.co/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <img src={devfolioLogo} alt="Devfolio Logo" style={{ height: '26px', width: 'auto', display: 'block' }} />
             </a>
           </div>
@@ -3387,7 +3387,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="https://fusionix2026.devfolio.co/" 
+                    href="https://fusionix-1.devfolio.co/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
