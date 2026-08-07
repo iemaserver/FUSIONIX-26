@@ -75,9 +75,6 @@ import foterLogo from './assets/images/foter-logo.jpeg';
 import brochurePdf from './assets/images/borocer.pdf';
 import themeImg from './assets/images/THEME.png';
 
-import introVideo from './assets/images/intro.mp4';
-import mobileIntroVideo from './assets/images/intro_mobil.mp4';
-
 const stealth07Img = roboninjaHeroImg;
 const nighthawkImg = hologramEarthImg;
 const cyberVImg = bg;
@@ -285,6 +282,20 @@ export default function App() {
     };
   }, [bgAudio]);
 
+  // Load Devfolio SDK script dynamically on mount
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   // Autoplay music on mount with fallback user interaction listeners to satisfy browser policies
   useEffect(() => {
     const startAudio = () => {
@@ -317,34 +328,11 @@ export default function App() {
   }, [bgAudio]);
 
   // Loading Screen & Mini-Game State
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const dismissIntro = () => {
     setIsLoading(false);
   };
-
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const [isMobileVideo, setIsMobileVideo] = useState<boolean>(
-    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
-  );
-
-  useEffect(() => {
-    if (isLoading && videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.warn("Autoplay prevented or failed:", err);
-      });
-    }
-  }, [isLoading, isMobileVideo]);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobileVideo(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const [bypassCountdown, setBypassCountdown] = useState<number>(7);
   const [isAutoCloseActive, setIsAutoCloseActive] = useState<boolean>(true);
@@ -855,43 +843,6 @@ export default function App() {
     setRegistrationSubmitted(true);
   };
 
-  if (isLoading) {
-    return (
-      <div 
-        id="intro-video-container" 
-        style={{
-          position: 'fixed',
-          inset: 0,
-          backgroundColor: '#000000',
-          zIndex: 99999,
-          overflow: 'hidden',
-          cursor: 'pointer'
-        }}
-        onClick={dismissIntro}
-      >
-        {/* Full-Screen background video */}
-        <video
-          ref={videoRef}
-          key={isMobileVideo ? 'mobile' : 'desktop'}
-          src={isMobileVideo ? mobileIntroVideo : introVideo}
-          autoPlay
-          muted
-          playsInline
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            objectFit: 'cover',
-            zIndex: 1
-          }}
-          onEnded={dismissIntro}
-        />
-      </div>
-    );
-  }
-
   return (
     <div 
       style={{
@@ -1279,21 +1230,50 @@ export default function App() {
                     Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
                   </p>
                 </div>
-              </div>
-
-              {/* SILVER SPONSORS */}
+                 {/* OFFICIAL PLATFORM PARTNERS */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                  <div style={{ padding: '6px 16px', background: 'rgba(203, 213, 225, 0.12)', border: '1px solid rgba(203, 213, 225, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <Award size={18} style={{ color: '#cbd5e1' }} />
-                    <span style={{ fontFamily: 'var(--font-display)', color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      SILVER SPONSORS
+                  <div style={{ padding: '6px 16px', background: 'rgba(55, 112, 255, 0.15)', border: '1px solid rgba(55, 112, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <Award size={18} style={{ color: '#3770FF' }} />
+                    <span style={{ fontFamily: 'var(--font-display)', color: '#3770FF', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
+                      OFFICIAL PLATFORM PARTNERS
                     </span>
                   </div>
-                  <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(203, 213, 225, 0.3) 0%, rgba(203, 213, 225, 0) 100%)' }} />
+                  <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(55, 112, 255, 0.3) 0%, rgba(55, 112, 255, 0) 100%)' }} />
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                  {/* Devfolio Partner Card */}
+                  <a 
+                    href="https://devfolio.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="team-member-card"
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '35px 20px',
+                      background: 'rgba(15, 23, 42, 0.65)',
+                      border: '1px solid rgba(55, 112, 255, 0.5)',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 0 20px rgba(55, 112, 255, 0.2)',
+                    }}
+                  >
+                    <div className="team-card-corners" />
+                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+                      <img 
+                        src={devfolioLogo} 
+                        alt="Devfolio" 
+                        style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
+                      />
+                    </div>
+              
+                  </a>
+
                   {/* Unstop Partner Card */}
                   <a 
                     href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
@@ -1315,7 +1295,7 @@ export default function App() {
                     }}
                   >
                     <div className="team-card-corners" />
-                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
+                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <img 
                         src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
                         alt="Unstop" 
@@ -1323,41 +1303,10 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-             
-                  </a>
-
-                  {/* Devfolio Partner Card */}
-                  <a 
-                    href="https://devfolio.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-member-card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '35px 20px',
-                      background: 'rgba(15, 23, 42, 0.65)',
-                      border: '1px solid rgba(55, 112, 255, 0.45)',
-                      borderRadius: '6px',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease',
-                      boxShadow: '0 0 15px rgba(55, 112, 255, 0.15)',
-                    }}
-                  >
-                    <div className="team-card-corners" />
-                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
-                      <img 
-                        src={devfolioLogo} 
-                        alt="DEVFOLIO LOGO" 
-                        style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                      />
-                    </div>
-              
+      
                   </a>
                 </div>
-              </div>
+              </div>             </div>
             </div>
 
             <div style={{ marginTop: '50px', textAlign: 'center', background: 'rgba(0, 0, 0, 0.25)', border: '1px solid rgba(0, 255, 102, 0.1)', borderRadius: '8px', padding: '30px' }}>
@@ -1487,31 +1436,58 @@ export default function App() {
                   Organized by: Department Of ECE & CSE ( IOT )
                 </p>
 
-                <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '15px' }}>
+                <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '15px', alignItems: 'center' }}>
+                  {/* Official Devfolio Apply Button Embed & Exact Fallback */}
+                  <div 
+                    className="apply-button" 
+                    data-hackathon-slug="fusionix-2026" 
+                    data-button-theme="light"
+                    style={{ minHeight: '44px', width: '312px', minWidth: '280px', display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    <a 
+                      href="https://devfolio.co/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        gap: '12px', 
+                        width: '100%', 
+                        height: '44px', 
+                        padding: '0 24px', 
+                        fontSize: '1.05rem', 
+                        fontWeight: 600, 
+                        background: '#3770FF', 
+                        color: '#ffffff', 
+                        border: 'none', 
+                        borderRadius: '8px', 
+                        textDecoration: 'none', 
+                        cursor: 'pointer', 
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+                        boxShadow: '0 4px 14px rgba(55, 112, 255, 0.4)',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', flexShrink: 0 }}>
+                        <path d="M61.3135 35.2396C61.375 42.3469 58.773 49.2195 54.0199 54.504C49.2669 59.7884 42.7073 63.1015 35.6333 63.7907C35.6333 63.7907 17.1973 64.2617 11.0968 63.7907C9.97972 63.6566 8.91805 63.229 8.01983 62.5514C7.12162 61.8738 6.41892 60.9704 5.98322 59.933C6.8414 60.3111 7.76069 60.5314 8.69703 60.5834C10.6931 60.7629 14.1022 60.8526 18.857 60.8526C25.8322 60.8526 33.4353 60.6507 33.5026 60.6507H33.6372C41.2372 60.0053 48.3045 56.4837 53.3964 50.8047C57.7637 45.9917 60.53 39.942 61.3135 33.4902V35.2396Z" fill="#ffffff"/>
+                        <path d="M59.0705 28.9821C59.1254 36.0926 56.5145 42.9656 51.7527 48.2463C46.9909 53.5271 40.4236 56.8324 33.3454 57.5108C33.3454 57.5108 14.9094 57.9818 8.80896 57.5108C7.16139 57.2552 5.6632 56.4086 4.59421 55.1291C3.52523 53.8496 2.95856 52.2248 3.00006 50.558V7.11465C2.97949 5.43928 3.57252 3.81426 4.66733 2.54593C5.76215 1.27759 7.28312 0.453573 8.94353 0.229205C15.0664 -0.286643 33.4799 0.229205 33.4799 0.229205C40.5729 0.942284 47.1394 4.29323 51.8789 9.61833C56.6183 14.9434 59.185 21.8543 59.0705 28.9821Z" fill="#ffffff"/>
+                      </svg>
+                      <span>Apply with Devfolio</span>
+                    </a>
+                  </div>
+
                   <a 
                     href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: '#1c49c2', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(28, 73, 194, 0.45)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '12px 22px', fontSize: '1rem', fontWeight: 'bold', background: '#1c49c2', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(28, 73, 194, 0.45)' }}
                   >
                     <img 
                       src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
                       alt="Unstop" 
                       referrerPolicy="no-referrer"
-                      style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
-                    />
-                  </a>
-                  <a 
-                    href="https://devfolio.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 24px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(55, 112, 255, 0.15)', color: '#3770FF', border: '1px solid #3770FF', borderRadius: '4px', textDecoration: 'none', cursor: 'pointer', boxShadow: '0 0 15px rgba(55, 112, 255, 0.3)' }}
-                  >
-                    <img 
-                      src={devfolioLogo} 
-                      alt="DEVFOLIO LOGO" 
                       style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
                     />
                   </a>
@@ -2614,19 +2590,50 @@ export default function App() {
               </div>
             </div>
 
-            {/* SILVER SPONSORS */}
+            {/* OFFICIAL PLATFORM PARTNERS */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ padding: '6px 16px', background: 'rgba(203, 213, 225, 0.12)', border: '1px solid rgba(203, 213, 225, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={18} style={{ color: '#cbd5e1' }} />
-                  <span style={{ fontFamily: 'var(--font-display)', color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                    SILVER SPONSORS
+                <div style={{ padding: '6px 16px', background: 'rgba(55, 112, 255, 0.15)', border: '1px solid rgba(55, 112, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <Award size={18} style={{ color: '#3770FF' }} />
+                  <span style={{ fontFamily: 'var(--font-display)', color: '#3770FF', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
+                    OFFICIAL PLATFORM PARTNERS
                   </span>
                 </div>
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(203, 213, 225, 0.3) 0%, rgba(203, 213, 225, 0) 100%)' }} />
+                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(55, 112, 255, 0.3) 0%, rgba(55, 112, 255, 0) 100%)' }} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                {/* Devfolio Partner Card */}
+                <a 
+                  href="https://devfolio.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="team-member-card"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '30px 20px',
+                    background: 'rgba(15, 23, 42, 0.65)',
+                    border: '1px solid rgba(55, 112, 255, 0.5)',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 0 20px rgba(55, 112, 255, 0.2)',
+                  }}
+                >
+                  <div className="team-card-corners" />
+                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+                    <img 
+                      src={devfolioLogo} 
+                      alt="Devfolio" 
+                      style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
+                    />
+                  </div>
+            
+                </a>
+
                 {/* Unstop Partner Card */}
                 <a 
                   href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
@@ -2648,7 +2655,7 @@ export default function App() {
                   }}
                 >
                   <div className="team-card-corners" />
-                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
+                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                     <img 
                       src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
                       alt="Unstop" 
@@ -2656,38 +2663,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-          
-                </a>
-
-                {/* Devfolio Partner Card */}
-                <a 
-                  href="https://devfolio.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="team-member-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '30px 20px',
-                    background: 'rgba(15, 23, 42, 0.65)',
-                    border: '1px solid rgba(55, 112, 255, 0.45)',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 15px rgba(55, 112, 255, 0.15)',
-                  }}
-                >
-                  <div className="team-card-corners" />
-                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
-                    <img 
-                      src={devfolioLogo} 
-                      alt="DEVFOLIO LOGO" 
-                      style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                    />
-                  </div>
-             
+            
                 </a>
               </div>
             </div>
@@ -3235,7 +3211,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="" 
+                    href="https://devfolio.co/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
@@ -3262,14 +3238,14 @@ export default function App() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <img 
                         src={devfolioLogo} 
-                        alt="DEVFOLIO LOGO" 
+                        alt="Devfolio" 
                         style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
                       />
                       <div>
                         <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 900, color: '#fff' }}>
                           DEV<span style={{ color: '#3770FF' }}>FOLIO</span>
                         </span>
-                        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>CONDUIT PORTAL</div>
+                        <div style={{ fontSize: '0.65rem', color: '#3770FF', fontWeight: 700 }}>HACKATHON PLATFORM PARTNER</div>
                       </div>
                     </div>
                     <div className="btn-cyber-solid" style={{ background: 'var(--accent-blue)', borderColor: 'var(--accent-blue)', color: '#000', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
