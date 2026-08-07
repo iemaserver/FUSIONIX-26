@@ -258,13 +258,25 @@ const DevfolioApplyButton: React.FC = () => {
   const [hasIframe, setHasIframe] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).devfolio) {
-      try {
-        (window as any).devfolio.init?.();
-      } catch (e) {
-        console.warn('Devfolio init:', e);
-      }
+    let script = document.getElementById('devfolio-sdk-script') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'devfolio-sdk-script';
+      script.src = 'https://apply.devfolio.co/v2/sdk.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
     }
+
+    const initDevfolio = () => {
+      if (typeof window !== 'undefined' && (window as any).devfolio) {
+        try {
+          (window as any).devfolio.init?.();
+        } catch (e) {
+          console.warn('Devfolio SDK init:', e);
+        }
+      }
+    };
 
     const checkIframe = () => {
       if (containerRef.current) {
@@ -275,35 +287,46 @@ const DevfolioApplyButton: React.FC = () => {
       }
     };
 
-    const interval = setInterval(checkIframe, 300);
-    return () => clearInterval(interval);
+    script.addEventListener('load', initDevfolio);
+    initDevfolio();
+
+    const interval = setInterval(() => {
+      initDevfolio();
+      checkIframe();
+    }, 400);
+
+    return () => {
+      clearInterval(interval);
+      if (script) {
+        script.removeEventListener('load', initDevfolio);
+      }
+    };
   }, []);
 
   return (
-    <div style={{ position: 'relative', minHeight: '44px', width: '312px', maxWidth: '100%', minWidth: '280px', display: 'inline-flex', alignItems: 'center' }}>
+    <div style={{ position: 'relative', height: '44px', width: '312px', minWidth: '280px', maxWidth: '100%', display: 'inline-flex', alignItems: 'center' }}>
+      {/* Devfolio Official Embed Container (Empty div required by Devfolio Integration Guidelines) */}
       <div 
         ref={containerRef}
         className="apply-button" 
-        data-hackathon-slug="fusionix-2026" 
+        data-hackathon-slug="FusioniX2026" 
         data-button-theme="light"
-        style={{ width: '100%', minHeight: '44px', display: 'flex', alignItems: 'center' }}
+        style={{ width: '100%', height: '44px', display: hasIframe ? 'block' : 'none' }}
       ></div>
 
+      {/* Devfolio Official Fallback Button strictly adhering to Devfolio Branding Guidelines */}
       {!hasIframe && (
         <a 
-          href="https://devfolio.co/"
+          href="https://fusionix2026.devfolio.co/"
           target="_blank"
           rel="noopener noreferrer"
           style={{ 
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '44px',
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
             gap: '12px', 
+            width: '100%', 
+            height: '44px', 
             padding: '0 24px', 
             fontSize: '1.05rem', 
             fontWeight: 600, 
@@ -314,9 +337,8 @@ const DevfolioApplyButton: React.FC = () => {
             textDecoration: 'none', 
             cursor: 'pointer', 
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-            boxShadow: '0 4px 14px rgba(55, 112, 255, 0.4)',
-            transition: 'all 0.2s ease',
-            zIndex: 10
+            boxShadow: '0 4px 14px rgba(55, 112, 255, 0.35)',
+            transition: 'all 0.2s ease'
           }}
         >
           <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', flexShrink: 0 }}>
@@ -1345,7 +1367,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {/* Devfolio Partner Card */}
                   <a 
-                    href="https://devfolio.co/"
+                    href="https://fusionix2026.devfolio.co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="team-member-card"
@@ -1371,7 +1393,7 @@ export default function App() {
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                
+                 
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -2668,7 +2690,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                 {/* Devfolio Partner Card */}
                 <a 
-                  href="https://devfolio.co/"
+                  href="https://fusionix2026.devfolio.co/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-member-card"
@@ -2694,7 +2716,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-              
+               
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2726,7 +2748,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-            
+               
                 </a>
               </div>
             </div>
@@ -3274,7 +3296,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href="https://devfolio.co/" 
+                    href="https://fusionix2026.devfolio.co/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
