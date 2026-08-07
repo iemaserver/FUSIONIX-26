@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { 
   Bot, 
@@ -82,8 +82,6 @@ const targetRobotImg = shadowXImg;
 
 const footerLogoImg = foterLogo;
 const timerBgImg = timerBackgroun;
-const DEVFOLIO_HACKATHON_SLUG = 'fusionix2026';
-const DEVFOLIO_HACKATHON_URL = `https://${DEVFOLIO_HACKATHON_SLUG}.devfolio.co/`;
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
   id: string;
@@ -256,6 +254,9 @@ function playSfx(type: 'snap' | 'destroy' | 'click') {
 }
 
 const DevfolioApplyButton: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hasIframe, setHasIframe] = useState<boolean>(false);
+
   useEffect(() => {
     let script = document.getElementById('devfolio-sdk-script') as HTMLScriptElement | null;
     if (!script) {
@@ -277,13 +278,25 @@ const DevfolioApplyButton: React.FC = () => {
       }
     };
 
+    const checkIframe = () => {
+      if (containerRef.current) {
+        const iframe = containerRef.current.querySelector('iframe');
+        if (iframe && iframe.offsetHeight > 20) {
+          setHasIframe(true);
+        }
+      }
+    };
+
     script.addEventListener('load', initDevfolio);
     initDevfolio();
 
-    const timer = window.setTimeout(initDevfolio, 250);
+    const interval = setInterval(() => {
+      initDevfolio();
+      checkIframe();
+    }, 400);
 
     return () => {
-      window.clearTimeout(timer);
+      clearInterval(interval);
       if (script) {
         script.removeEventListener('load', initDevfolio);
       }
@@ -291,12 +304,55 @@ const DevfolioApplyButton: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className="apply-button"
-      data-hackathon-slug={DEVFOLIO_HACKATHON_SLUG}
-      data-button-theme="light"
-      style={{ height: '44px', width: '312px', maxWidth: '100%' }}
-    ></div>
+    <div style={{ position: 'relative', height: '44px', width: '312px', minWidth: '280px', maxWidth: '100%', display: 'inline-flex', alignItems: 'center' }}>
+      {/* Devfolio Official Embed Container (Empty div required by Devfolio Integration Guidelines) */}
+      <div 
+        ref={containerRef}
+        className="apply-button" 
+        data-hackathon-slug="FusioniX2026" 
+        data-button-theme="light"
+        style={{ width: '100%', height: '44px', display: 'block' }}
+      ></div>
+
+      {/* Devfolio Official Fallback Button shown until iframe loads */}
+      {!hasIframe && (
+        <a 
+          href="https://fusionix2026.devfolio.co/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ 
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '12px', 
+            width: '100%', 
+            height: '44px', 
+            padding: '0 24px', 
+            fontSize: '1.05rem', 
+            fontWeight: 600, 
+            background: '#3770FF', 
+            color: '#ffffff', 
+            border: 'none', 
+            borderRadius: '8px', 
+            textDecoration: 'none', 
+            cursor: 'pointer', 
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+            boxShadow: '0 4px 14px rgba(55, 112, 255, 0.35)',
+            transition: 'all 0.2s ease',
+            pointerEvents: 'auto'
+          }}
+        >
+          <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', flexShrink: 0 }}>
+            <path d="M61.3135 35.2396C61.375 42.3469 58.773 49.2195 54.0199 54.504C49.2669 59.7884 42.7073 63.1015 35.6333 63.7907C35.6333 63.7907 17.1973 64.2617 11.0968 63.7907C9.97972 63.6566 8.91805 63.229 8.01983 62.5514C7.12162 61.8738 6.41892 60.9704 5.98322 59.933C6.8414 60.3111 7.76069 60.5314 8.69703 60.5834C10.6931 60.7629 14.1022 60.8526 18.857 60.8526C25.8322 60.8526 33.4353 60.6507 33.5026 60.6507H33.6372C41.2372 60.0053 48.3045 56.4837 53.3964 50.8047C57.7637 45.9917 60.53 39.942 61.3135 33.4902V35.2396Z" fill="#ffffff"/>
+            <path d="M59.0705 28.9821C59.1254 36.0926 56.5145 42.9656 51.7527 48.2463C46.9909 53.5271 40.4236 56.8324 33.3454 57.5108C33.3454 57.5108 14.9094 57.9818 8.80896 57.5108C7.16139 57.2552 5.6632 56.4086 4.59421 55.1291C3.52523 53.8496 2.95856 52.2248 3.00006 50.558V7.11465C2.97949 5.43928 3.57252 3.81426 4.66733 2.54593C5.76215 1.27759 7.28312 0.453573 8.94353 0.229205C15.0664 -0.286643 33.4799 0.229205 33.4799 0.229205C40.5729 0.942284 47.1394 4.29323 51.8789 9.61833C56.6183 14.9434 59.185 21.8543 59.0705 28.9821Z" fill="#ffffff"/>
+          </svg>
+          <span>Apply with Devfolio</span>
+        </a>
+      )}
+    </div>
   );
 };
 
@@ -328,6 +384,43 @@ export default function App() {
       bgAudio.pause();
     };
   }, [bgAudio]);
+
+  // Load Devfolio SDK script dynamically on mount and initialize reliably
+  useEffect(() => {
+    const scriptId = 'devfolio-sdk-script';
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://apply.devfolio.co/v2/sdk.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    const initDevfolio = () => {
+      if (typeof window !== 'undefined' && (window as any).devfolio) {
+        try {
+          (window as any).devfolio.init?.();
+        } catch (e) {
+          console.warn('Devfolio SDK initialization:', e);
+        }
+      }
+    };
+
+    script.addEventListener('load', initDevfolio);
+    
+    // Timer fallback to trigger SDK after DOM nodes are fully rendered
+    const timer = setTimeout(initDevfolio, 150);
+
+    return () => {
+      clearTimeout(timer);
+      if (script) {
+        script.removeEventListener('load', initDevfolio);
+      }
+    };
+  }, []);
 
   // Autoplay music on mount with fallback user interaction listeners to satisfy browser policies
   useEffect(() => {
@@ -1255,13 +1348,42 @@ export default function App() {
                   <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
                 </div>
 
-                <div className="team-member-card gold" style={{ padding: '35px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
-                  <div className="team-card-corners" />
-                  <Cpu size={36} className="glow-text-gold" style={{ marginBottom: '12px', display: 'inline-block' }} />
-                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.5rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 10px 0' }}>Coming soon....</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                    Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
-                  </p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                  {/* Devfolio Gold Sponsor Card */}
+                  <a 
+                    href="https://fusionix2026.devfolio.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="team-member-card gold"
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '30px 20px',
+                      background: '#0F172A',
+                      border: '1px solid rgba(255, 183, 3, 0.6)',
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 0 25px rgba(255, 183, 3, 0.2)',
+                    }}
+                  >
+                    <div className="team-card-corners" />
+                    <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                      <img 
+                        src={devfolioLogo} 
+                        alt="Devfolio Logo" 
+                        style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
+                      />
+                    </div>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      DEVFOLIO
+                    </span>
+                    <span style={{ fontSize: '0.8rem', color: '#ffb703', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800 }}>
+                      GOLD SPONSOR & PLATFORM PARTNER
+                    </span>
+                  </a>
                 </div>
                  {/* OFFICIAL PLATFORM PARTNERS */}
               <div>
@@ -1278,7 +1400,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   {/* Devfolio Partner Card */}
                   <a 
-                    href={DEVFOLIO_HACKATHON_URL}
+                    href="https://fusionix2026.devfolio.co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="team-member-card"
@@ -1288,23 +1410,28 @@ export default function App() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       padding: '35px 20px',
-                      background: 'rgba(15, 23, 42, 0.65)',
-                      border: '1px solid rgba(55, 112, 255, 0.5)',
-                      borderRadius: '6px',
+                      background: '#0F172A',
+                      border: '1px solid rgba(55, 112, 255, 0.6)',
+                      borderRadius: '8px',
                       textDecoration: 'none',
                       transition: 'all 0.3s ease',
-                      boxShadow: '0 0 20px rgba(55, 112, 255, 0.2)',
+                      boxShadow: '0 0 20px rgba(55, 112, 255, 0.25)',
                     }}
                   >
                     <div className="team-card-corners" />
                     <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <img 
                         src={devfolioLogo} 
-                        alt="DEVFOLIO LOGO" 
+                        alt="Devfolio Logo" 
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                 
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      DEVFOLIO
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      HACKATHON PLATFORM PARTNER
+                    </span>
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -1336,7 +1463,12 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                   
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      UNSTOP
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      OFFICIAL REGISTRATION PARTNER
+                    </span>
                   </a>
                 </div>
               </div>             </div>
@@ -2576,13 +2708,42 @@ export default function App() {
                 <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
               </div>
 
-              <div className="team-member-card gold" style={{ padding: '30px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
-                <div className="team-card-corners" />
-                <Cpu size={32} className="glow-text-gold" style={{ marginBottom: '10px', display: 'inline-block' }} />
-                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.4rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 8px 0' }}>Coming soon....</h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
-                </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                {/* Devfolio Gold Sponsor Card */}
+                <a 
+                  href="https://fusionix2026.devfolio.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="team-member-card gold"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '30px 20px',
+                    background: '#0F172A',
+                    border: '1px solid rgba(255, 183, 3, 0.6)',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 0 25px rgba(255, 183, 3, 0.2)',
+                  }}
+                >
+                  <div className="team-card-corners" />
+                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    <img 
+                      src={devfolioLogo} 
+                      alt="Devfolio Logo" 
+                      style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
+                    />
+                  </div>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    DEVFOLIO
+                  </span>
+                  <span style={{ fontSize: '0.8rem', color: '#ffb703', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800 }}>
+                    GOLD SPONSOR & PLATFORM PARTNER
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -2601,7 +2762,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                 {/* Devfolio Partner Card */}
                 <a 
-                  href={DEVFOLIO_HACKATHON_URL}
+                  href="https://fusionix2026.devfolio.co/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-member-card"
@@ -2611,23 +2772,28 @@ export default function App() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: '30px 20px',
-                    background: 'rgba(15, 23, 42, 0.65)',
-                    border: '1px solid rgba(55, 112, 255, 0.5)',
-                    borderRadius: '6px',
+                    background: '#0F172A',
+                    border: '1px solid rgba(55, 112, 255, 0.6)',
+                    borderRadius: '8px',
                     textDecoration: 'none',
                     transition: 'all 0.3s ease',
-                    boxShadow: '0 0 20px rgba(55, 112, 255, 0.2)',
+                    boxShadow: '0 0 20px rgba(55, 112, 255, 0.25)',
                   }}
                 >
                   <div className="team-card-corners" />
                   <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                     <img 
                       src={devfolioLogo} 
-                      alt="DEVFOLIO LOGO" 
+                      alt="Devfolio Logo" 
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-               
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    DEVFOLIO
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    HACKATHON PLATFORM PARTNER
+                  </span>
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2659,7 +2825,12 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-                 
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    UNSTOP
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    OFFICIAL REGISTRATION PARTNER
+                  </span>
                 </a>
               </div>
             </div>
@@ -2777,9 +2948,17 @@ export default function App() {
         </div>
 
         {/* Footer bottom bar */}
-        <div className="footer-bottom">
-          <p className="copy-text">© 2026 FusioniX. ECE & CSE (IoT) Department. All rights reserved.</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div className="footer-bottom" style={{ flexDirection: 'column', gap: '15px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 20px', background: 'rgba(15, 23, 42, 0.85)', borderRadius: '8px', border: '1px solid rgba(55, 112, 255, 0.3)', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+            <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 700, letterSpacing: '1px' }}>OFFICIAL PLATFORM PARTNER & GOLD SPONSOR:</span>
+            <a href="https://fusionix2026.devfolio.co/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+              <img src={devfolioLogo} alt="Devfolio Logo" style={{ height: '26px', width: 'auto', display: 'block' }} />
+            </a>
+          </div>
+
+          <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+            <p className="copy-text">© 2026 FusioniX. ECE & CSE (IoT) Department. All rights reserved.</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a 
                 href="https://www.instagram.com/fusionix.26" 
@@ -2821,7 +3000,8 @@ export default function App() {
             </div>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
 
       {/* ==========================================
          OFFICIAL INTERACTIVE REGISTRATION CAPTURE MODAL
@@ -3207,7 +3387,7 @@ export default function App() {
 
                   {/* Devfolio Portal Button */}
                   <a 
-                    href={DEVFOLIO_HACKATHON_URL} 
+                    href="https://fusionix2026.devfolio.co/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="team-member-card blue w-full"
@@ -3234,7 +3414,7 @@ export default function App() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <img 
                         src={devfolioLogo} 
-                        alt="DEVFOLIO LOGO" 
+                        alt="Devfolio Logo" 
                         style={{ height: '22px', width: 'auto', display: 'block', flexShrink: 0 }} 
                       />
                       <div>
@@ -3244,8 +3424,8 @@ export default function App() {
                         <div style={{ fontSize: '0.65rem', color: '#3770FF', fontWeight: 700 }}>HACKATHON PLATFORM PARTNER</div>
                       </div>
                     </div>
-                    <div className="btn-cyber-solid" style={{ background: 'var(--accent-blue)', borderColor: 'var(--accent-blue)', color: '#000', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
-                      <span>coming soon</span>
+                    <div className="btn-cyber-solid" style={{ background: '#3770FF', borderColor: '#3770FF', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
+                      <span>APPLY NOW</span>
                       <ArrowRight size={12} />
                     </div>
                   </a>
