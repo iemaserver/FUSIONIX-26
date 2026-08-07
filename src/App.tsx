@@ -282,16 +282,39 @@ export default function App() {
     };
   }, [bgAudio]);
 
-  // Load Devfolio SDK script dynamically on mount
+  // Load Devfolio SDK script dynamically on mount and initialize reliably
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+    const scriptId = 'devfolio-sdk-script';
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://apply.devfolio.co/v2/sdk.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    const initDevfolio = () => {
+      if (typeof window !== 'undefined' && (window as any).devfolio) {
+        try {
+          (window as any).devfolio.init?.();
+        } catch (e) {
+          console.warn('Devfolio SDK initialization:', e);
+        }
+      }
+    };
+
+    script.addEventListener('load', initDevfolio);
+    
+    // Timer fallback to trigger SDK after DOM nodes are fully rendered
+    const timer = setTimeout(initDevfolio, 150);
+
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      clearTimeout(timer);
+      if (script) {
+        script.removeEventListener('load', initDevfolio);
       }
     };
   }, []);
@@ -1271,7 +1294,12 @@ export default function App() {
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-              
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      DEVFOLIO
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      HACKATHON PLATFORM PARTNER
+                    </span>
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -1303,7 +1331,12 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-      
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      UNSTOP
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      OFFICIAL REGISTRATION PARTNER
+                    </span>
                   </a>
                 </div>
               </div>             </div>
@@ -2631,7 +2664,12 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-            
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    DEVFOLIO
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    HACKATHON PLATFORM PARTNER
+                  </span>
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2663,7 +2701,12 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-            
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    UNSTOP
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    OFFICIAL REGISTRATION PARTNER
+                  </span>
                 </a>
               </div>
             </div>
