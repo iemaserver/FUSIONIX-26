@@ -67,7 +67,7 @@ import iem from './assets/images/iem-blac.png';
 import uem from './assets/images/UEM-BALCK.png';
 import ankan from './assets/images/souhardya.png';
 import roboninjaHeroImg from './assets/images/Bg.png';
-import devfolioLogo from './assets/images/devfolio.svg';
+const devfolioLogo = '/devfolio.svg';
 
 import prizesBannerImg from './assets/images/50K Prize Pool.png';
 import timerBackgroun from './assets/images/timerBackgroun.jpeg';
@@ -1425,7 +1425,7 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                    
+                   
                   </a>
                 </div>
               </div>             </div>
@@ -2748,7 +2748,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-               
+                 
                 </a>
               </div>
             </div>
