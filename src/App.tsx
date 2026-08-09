@@ -1348,42 +1348,13 @@ export default function App() {
                   <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                  {/* Devfolio Gold Sponsor Card */}
-                  <a 
-                    href="https://fusionix-1.devfolio.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-member-card gold"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '30px 20px',
-                      background: '#0F172A',
-                      border: '1px solid rgba(255, 183, 3, 0.6)',
-                      borderRadius: '8px',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease',
-                      boxShadow: '0 0 25px rgba(255, 183, 3, 0.2)',
-                    }}
-                  >
-                    <div className="team-card-corners" />
-                    <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-                      <img 
-                        src={devfolioLogo} 
-                        alt="Devfolio Logo" 
-                        style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                      />
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                      DEVFOLIO
-                    </span>
-                    <span style={{ fontSize: '0.8rem', color: '#ffb703', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800 }}>
-                      GOLD SPONSOR & PLATFORM PARTNER
-                    </span>
-                  </a>
+                <div className="team-member-card gold" style={{ padding: '35px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
+                  <div className="team-card-corners" />
+                  <Cpu size={36} className="glow-text-gold" style={{ marginBottom: '12px', display: 'inline-block' }} />
+                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.5rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 10px 0' }}>Coming soon....</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
+                    Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
+                  </p>
                 </div>
                  {/* OFFICIAL PLATFORM PARTNERS */}
               <div>
@@ -1426,7 +1397,7 @@ export default function App() {
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                 
+                   
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -1458,8 +1429,7 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                   
-                  </a>
+                 </a>
                 </div>
               </div>             </div>
             </div>
@@ -2698,42 +2668,13 @@ export default function App() {
                 <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                {/* Devfolio Gold Sponsor Card */}
-                <a 
-                  href="https://fusionix-1.devfolio.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="team-member-card gold"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '30px 20px',
-                    background: '#0F172A',
-                    border: '1px solid rgba(255, 183, 3, 0.6)',
-                    borderRadius: '8px',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 25px rgba(255, 183, 3, 0.2)',
-                  }}
-                >
-                  <div className="team-card-corners" />
-                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-                    <img 
-                      src={devfolioLogo} 
-                      alt="Devfolio Logo" 
-                      style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                    />
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                    DEVFOLIO
-                  </span>
-                  <span style={{ fontSize: '0.8rem', color: '#ffb703', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800 }}>
-                    GOLD SPONSOR & PLATFORM PARTNER
-                  </span>
-                </a>
+              <div className="team-member-card gold" style={{ padding: '30px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
+                <div className="team-card-corners" />
+                <Cpu size={32} className="glow-text-gold" style={{ marginBottom: '10px', display: 'inline-block' }} />
+                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.4rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 8px 0' }}>Coming soon....</h4>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
+                  Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
+                </p>
               </div>
             </div>
 
@@ -2778,7 +2719,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-             
+          
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2810,7 +2751,7 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-
+                  
                 </a>
               </div>
             </div>
@@ -2930,7 +2871,7 @@ export default function App() {
         {/* Footer bottom bar */}
         <div className="footer-bottom" style={{ flexDirection: 'column', gap: '15px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 20px', background: 'rgba(15, 23, 42, 0.85)', borderRadius: '8px', border: '1px solid rgba(55, 112, 255, 0.3)', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
-            <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 700, letterSpacing: '1px' }}>OFFICIAL PLATFORM PARTNER & GOLD SPONSOR:</span>
+            <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 700, letterSpacing: '1px' }}>OFFICIAL PLATFORM PARTNER:</span>
             <a href="https://fusionix-1.devfolio.co/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <img src={devfolioLogo} alt="Devfolio Logo" style={{ height: '26px', width: 'auto', display: 'block' }} />
             </a>
