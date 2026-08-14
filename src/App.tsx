@@ -761,7 +761,7 @@ export default function App() {
     },
     {
       q: 'Who can participate in the hackathon?',
-      a: 'Currently, registration is open to pre-final and final year B.Tech students from the sister campuses of Institute of Engineering & Management (IEM Newtown Campus and IEM Saltlake Campus) Kolkata.'
+      a: 'Registration is open to participants from any college or university. Everyone is welcome to participate!'
     },
     {
       q: 'What is the maximum and minimum team size?',
@@ -1397,7 +1397,12 @@ export default function App() {
                         style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                   
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      DEVFOLIO
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      HACKATHON PLATFORM PARTNER
+                    </span>
                   </a>
 
                   {/* Unstop Partner Card */}
@@ -1429,7 +1434,13 @@ export default function App() {
                         style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                       />
                     </div>
-                 </a>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                      UNSTOP
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                      OFFICIAL REGISTRATION PARTNER
+                    </span>
+                  </a>
                 </div>
               </div>             </div>
             </div>
@@ -2719,7 +2730,12 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-          
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    DEVFOLIO
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    HACKATHON PLATFORM PARTNER
+                  </span>
                 </a>
 
                 {/* Unstop Partner Card */}
@@ -2751,7 +2767,12 @@ export default function App() {
                       style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
                     />
                   </div>
-                  
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    UNSTOP
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    OFFICIAL REGISTRATION PARTNER
+                  </span>
                 </a>
               </div>
             </div>
@@ -2869,17 +2890,9 @@ export default function App() {
         </div>
 
         {/* Footer bottom bar */}
-        <div className="footer-bottom" style={{ flexDirection: 'column', gap: '15px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 20px', background: 'rgba(15, 23, 42, 0.85)', borderRadius: '8px', border: '1px solid rgba(55, 112, 255, 0.3)', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
-            <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 700, letterSpacing: '1px' }}>OFFICIAL PLATFORM PARTNER:</span>
-            <a href="https://fusionix-1.devfolio.co/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-              <img src={devfolioLogo} alt="Devfolio Logo" style={{ height: '26px', width: 'auto', display: 'block' }} />
-            </a>
-          </div>
-
-          <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
-            <p className="copy-text">© 2026 FusioniX. ECE & CSE (IoT) Department. All rights reserved.</p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div className="footer-bottom">
+          <p className="copy-text">© 2026 FusioniX. ECE & CSE (IoT) Department. All rights reserved.</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a 
                 href="https://www.instagram.com/fusionix.26" 
@@ -2921,8 +2934,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
 
       {/* ==========================================
          OFFICIAL INTERACTIVE REGISTRATION CAPTURE MODAL
