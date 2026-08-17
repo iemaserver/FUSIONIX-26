@@ -1880,7 +1880,7 @@ export default function App() {
                     {
                       id: 3,
                       title: "1st Round Result Announcement",
-                      dateStr: "Aug 26, 2026",
+                      dateStr: "Aug 30, 2026",
                       start: new Date('2026-08-30T00:00:00'),
                       end: new Date('2026-08-30T23:59:59')
                     },
