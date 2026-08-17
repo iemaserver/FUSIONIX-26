@@ -1873,16 +1873,16 @@ export default function App() {
                     {
                       id: 2,
                       title: "Last Date of PPT Submission",
-                      dateStr: "Aug 18, 2026",
-                      start: new Date('2026-08-18T00:00:00'),
-                      end: new Date('2026-08-18T23:59:59')
+                      dateStr: "Aug 20, 2026",
+                      start: new Date('2026-08-20T00:00:00'),
+                      end: new Date('2026-08-20T23:59:59')
                     },
                     {
                       id: 3,
                       title: "1st Round Result Announcement",
                       dateStr: "Aug 26, 2026",
-                      start: new Date('2026-08-26T00:00:00'),
-                      end: new Date('2026-08-26T23:59:59')
+                      start: new Date('2026-08-30T00:00:00'),
+                      end: new Date('2026-08-30T23:59:59')
                     },
                     {
                       id: 4,
