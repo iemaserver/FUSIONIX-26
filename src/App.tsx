@@ -1887,9 +1887,9 @@ export default function App() {
                     {
                       id: 4,
                       title: "Finalist Team Reveal",
-                      dateStr: "Aug 30, 2026",
-                      start: new Date('2026-08-30T00:00:00'),
-                      end: new Date('2026-08-30T23:59:59')
+                      dateStr: "Sep 01, 2026",
+                      start: new Date('2026-09-01T00:00:00'),
+                      end: new Date('2026-09-01T23:59:59')
                     },
                     {
                       id: 5,
