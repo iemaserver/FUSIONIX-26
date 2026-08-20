@@ -1873,9 +1873,9 @@ export default function App() {
                     {
                       id: 2,
                       title: "Last Date of PPT Submission",
-                      dateStr: "Aug 20, 2026",
-                      start: new Date('2026-08-20T00:00:00'),
-                      end: new Date('2026-08-20T23:59:59')
+                      dateStr: "Aug 25, 2026",
+                      start: new Date('2026-08-25T00:00:00'),
+                      end: new Date('2026-08-25T23:59:59')
                     },
                     {
                       id: 3,
@@ -2501,6 +2501,15 @@ export default function App() {
               initials: "PS",
               instagram: "https://www.instagram.com/_daliya_here?igsh=MXZqb3E1Y2EweHprbA==",
               linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
+            },
+                  {
+              name: "Maupiya Pramanik ",
+              role: "co-coordinator",
+              src: maupriya,
+              initials: "PS",
+              instagram: "https://www.instagram.com/",
+              linkedin: "https://www.linkedin.com/in/",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             }
           ].map((coord, idx) => (
