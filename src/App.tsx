@@ -209,7 +209,7 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   { name: "Debojeet Banerjee", role: "Graphics Team", email: "", initials: "DB" }
 
 ],
-  "Rajdeb Pal": [
+  "Daliya Paul": [
   { name: "Debarshi Kar", role: "Student Volunteer", email: "", initials: "DK" },
   { name: "Rahul Agarwal", role: "Student Volunteer", email: "", initials: "RA" },
   { name: "Mayukh Das", role: "Student Volunteer", email: "", initials: "MD" },
@@ -2458,14 +2458,14 @@ export default function App() {
               linkedin: "https://www.linkedin.com/in/rohitaswa-singha-b46ba4318?utm_source=share_via&utm_content=profile&utm_medium=member_android",
               desc: "Designing top tier visual interfaces, dark mode color grading schemas, vector mockups, and assets."
             },
-            {
-              name: "Rajdeb Pal",
-              role: "Sponsorship Executive",
-              src: rajdeb,
-              initials: "RP",
-              instagram: "https://www.instagram.com/pixelcoder_raj?igsh=MTZlNzUxam8zbXQ=",
-              linkedin: "https://www.linkedin.com/in/rajdeb-pal-716249288?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-              desc: "Coordinating strategic partner networks, resource allocations, and corporate sponsor pools."
+           {
+              name: "Daliya Paul",
+              role: "SP. CO-LEAD",
+              src: dalia,
+              initials: "PS",
+              instagram: "https://www.instagram.com/_daliya_here?igsh=MXZqb3E1Y2EweHprbA==",
+              linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             },
             {
               name: "Raunak Dasgupta",
@@ -2494,15 +2494,7 @@ export default function App() {
               linkedin: "https://www.linkedin.com/in/ankan-sarkar-391005325",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             },
-            {
-              name: "Daliya Paul ",
-              role: "sponsorship Manager",
-              src: dalia,
-              initials: "PS",
-              instagram: "https://www.instagram.com/_daliya_here?igsh=MXZqb3E1Y2EweHprbA==",
-              linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
-            },
+ 
                   {
               name: "Maupiya Pramanik ",
               role: "co-coordinator",
