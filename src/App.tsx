@@ -70,7 +70,7 @@ import roboninjaHeroImg from './assets/images/Bg.png';
 const devfolioLogo = '/devfolio.svg';
 
 // Sponsor Logos
-import algorandLogo from './assets/SPONSORS/PLATINUM/Algorand-Crypto-Logo-PNG-Pic-thumb.webp';
+import algorandLogo from './assets/SPONSORS/PLATINUM/algorandLogo.jpg';
 import corsairLogo from './assets/SPONSORS/PLATINUM/CORSAIR.png';
 import aqyronLogo from './assets/SPONSORS/GOLD/IMG-20260812-WA0037(5).jpg.jpeg';
 import miroLogo from './assets/SPONSORS/GOLD/Miro Meetups Kolkata.jpg.jpeg';
