@@ -69,6 +69,15 @@ import ankan from './assets/images/souhardya.png';
 import roboninjaHeroImg from './assets/images/Bg.png';
 const devfolioLogo = '/devfolio.svg';
 
+// Sponsor Logos
+import algorandLogo from './assets/SPONSORS/PLATINUM/Algorand-Crypto-Logo-PNG-Pic-thumb.webp';
+import corsairLogo from './assets/SPONSORS/PLATINUM/CORSAIR.png';
+import aqyronLogo from './assets/SPONSORS/GOLD/IMG-20260812-WA0037(5).jpg.jpeg';
+import miroLogo from './assets/SPONSORS/GOLD/Miro Meetups Kolkata.jpg.jpeg';
+import zynovoLogo from './assets/SPONSORS/GOLD/Zynovosocial.webp';
+import neuralLogo from './assets/SPONSORS/SILVER/logo.png';
+import mongodbLogo from './assets/SPONSORS/MERCHANDISE/MongoDB.png';
+
 import prizesBannerImg from './assets/images/50K Prize Pool.png';
 import timerBackgroun from './assets/images/timerBackgroun.jpeg';
 import foterLogo from './assets/images/foter-logo.jpeg';
@@ -355,6 +364,220 @@ const DevfolioApplyButton: React.FC = () => {
     </div>
   );
 };
+
+interface SponsorItem {
+  name: string;
+  role: string;
+  logo: string;
+  url?: string;
+  logoStyle?: React.CSSProperties;
+  logoContainerStyle?: React.CSSProperties;
+}
+
+interface SponsorTier {
+  title: string;
+  color: string;
+  cardClass?: string;
+  borderColor: string;
+  glowColor: string;
+  items: SponsorItem[];
+}
+
+const sponsorTiers: SponsorTier[] = [
+  {
+    title: 'PLATINUM SPONSORS',
+    color: '#00e5ff',
+    borderColor: 'rgba(0, 229, 255, 0.4)',
+    glowColor: 'rgba(0, 229, 255, 0.15)',
+    cardClass: 'blue',
+    items: [
+      {
+        name: 'ALGORAND',
+        role: 'PLATINUM SPONSOR',
+        logo: algorandLogo,
+        url: 'https://algorand.co/',
+        logoStyle: { height: '48px', width: 'auto', display: 'block', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(0, 229, 255, 0.45))' },
+      },
+      {
+        name: 'CORSAIR',
+        role: 'PLATINUM SPONSOR',
+        logo: corsairLogo,
+        url: 'https://www.corsair.com/',
+        logoStyle: { height: '44px', width: 'auto', display: 'block', objectFit: 'contain', filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(0, 229, 255, 0.4))' },
+      },
+    ],
+  },
+  {
+    title: 'GOLD SPONSORS',
+    color: '#ffb703',
+    borderColor: 'rgba(255, 183, 3, 0.4)',
+    glowColor: 'rgba(255, 183, 3, 0.15)',
+    cardClass: 'gold',
+    items: [
+      {
+        name: 'AQYRON LABS',
+        role: 'GOLD SPONSOR',
+        logo: aqyronLogo,
+        url: 'https://aqyronlabs.com/',
+        logoContainerStyle: { background: '#ffffff', borderRadius: '8px', padding: '6px 14px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '52px' },
+        logoStyle: { maxHeight: '40px', maxWidth: '140px', objectFit: 'contain', display: 'block' },
+      },
+      {
+        name: 'MIRO',
+        role: 'GOLD SPONSOR',
+        logo: miroLogo,
+        url: 'https://miro.com/',
+        logoContainerStyle: { background: '#ffffff', borderRadius: '8px', padding: '6px 14px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '52px' },
+        logoStyle: { maxHeight: '34px', maxWidth: '140px', objectFit: 'contain', display: 'block' },
+      },
+      {
+        name: 'ZYNOVO SOCIAL',
+        role: 'GOLD SPONSOR',
+        logo: zynovoLogo,
+        url: 'https://zynovo.com/',
+        logoStyle: { height: '52px', width: '52px', objectFit: 'cover', borderRadius: '50%', filter: 'drop-shadow(0 0 8px rgba(255, 183, 3, 0.35))' },
+      },
+    ],
+  },
+  {
+    title: 'SILVER SPONSORS',
+    color: '#e2e8f0',
+    borderColor: 'rgba(226, 232, 240, 0.35)',
+    glowColor: 'rgba(226, 232, 240, 0.12)',
+    items: [
+      {
+        name: 'NEURAL',
+        role: 'SILVER SPONSOR',
+        logo: neuralLogo,
+        logoContainerStyle: { background: '#ffffff', borderRadius: '8px', padding: '6px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '52px' },
+        logoStyle: { maxHeight: '36px', maxWidth: '140px', objectFit: 'contain', display: 'block' },
+      },
+    ],
+  },
+  {
+    title: 'MERCHANDISE PARTNER',
+    color: '#10b981',
+    borderColor: 'rgba(16, 185, 129, 0.4)',
+    glowColor: 'rgba(16, 185, 129, 0.15)',
+    cardClass: 'green',
+    items: [
+      {
+        name: 'MONGODB',
+        role: 'MERCHANDISE PARTNER',
+        logo: mongodbLogo,
+        url: 'https://www.mongodb.com/',
+        logoContainerStyle: { background: '#ffffff', borderRadius: '8px', padding: '6px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '52px' },
+        logoStyle: { maxHeight: '34px', maxWidth: '140px', objectFit: 'contain', display: 'block' },
+      },
+    ],
+  },
+  {
+    title: 'OFFICIAL PLATFORM PARTNERS',
+    color: '#3770FF',
+    borderColor: 'rgba(55, 112, 255, 0.5)',
+    glowColor: 'rgba(55, 112, 255, 0.2)',
+    items: [
+      {
+        name: 'DEVFOLIO',
+        role: 'HACKATHON PLATFORM PARTNER',
+        logo: devfolioLogo,
+        url: 'https://fusionix-1.devfolio.co/',
+        logoStyle: { height: '38px', width: 'auto', display: 'block', objectFit: 'contain' },
+      },
+      {
+        name: 'UNSTOP',
+        role: 'OFFICIAL REGISTRATION PARTNER',
+        logo: 'https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png',
+        url: 'https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790',
+        logoStyle: { height: '36px', width: 'auto', display: 'block', objectFit: 'contain' },
+      },
+    ],
+  },
+];
+
+function SponsorsGrid() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '45px', maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
+      {sponsorTiers.map((tier, tIdx) => (
+        <div key={tIdx}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ padding: '6px 16px', background: `${tier.color}1f`, border: `1px solid ${tier.borderColor}`, borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <Award size={18} style={{ color: tier.color }} />
+              <span style={{ fontFamily: 'var(--font-display)', color: tier.color, fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
+                {tier.title}
+              </span>
+            </div>
+            <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${tier.borderColor} 0%, rgba(0, 0, 0, 0) 100%)` }} />
+          </div>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: tier.items.length === 1 ? 'repeat(auto-fit, minmax(280px, 360px))' : 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '20px' 
+          }}>
+            {tier.items.map((sponsor, sIdx) => {
+              const CardTag = sponsor.url ? 'a' : 'div';
+              const linkProps = sponsor.url ? {
+                href: sponsor.url,
+                target: sponsor.url.startsWith('http') ? '_blank' : undefined,
+                rel: sponsor.url.startsWith('http') ? 'noopener noreferrer' : undefined,
+              } : {};
+
+              return (
+                <CardTag
+                  key={sIdx}
+                  {...linkProps}
+                  className={`team-member-card ${tier.cardClass || ''}`}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '30px 20px',
+                    background: 'rgba(15, 23, 42, 0.65)',
+                    border: `1px solid ${tier.borderColor}`,
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease',
+                    boxShadow: `0 0 20px ${tier.glowColor}`,
+                    cursor: sponsor.url ? 'pointer' : 'default',
+                  }}
+                >
+                  <div className="team-card-corners" />
+                  <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    {sponsor.logoContainerStyle ? (
+                      <div style={sponsor.logoContainerStyle}>
+                        <img 
+                          src={sponsor.logo} 
+                          alt={sponsor.name} 
+                          style={sponsor.logoStyle}
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    ) : (
+                      <img 
+                        src={sponsor.logo} 
+                        alt={sponsor.name} 
+                        style={sponsor.logoStyle}
+                        referrerPolicy="no-referrer"
+                      />
+                    )}
+                  </div>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
+                    {sponsor.name}
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: tier.color, textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
+                    {sponsor.role}
+                  </span>
+                </CardTag>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function App() {
   // Background sound state
@@ -1313,137 +1536,7 @@ export default function App() {
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '45px', maxWidth: '1100px', margin: '0 auto' }}>
-              {/* PLATINUM SPONSORS */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                  <div style={{ padding: '6px 16px', background: 'rgba(0, 229, 255, 0.12)', border: '1px solid rgba(0, 229, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <Award size={18} style={{ color: '#00e5ff' }} />
-                    <span style={{ fontFamily: 'var(--font-display)', color: '#00e5ff', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      PLATINUM SPONSORS
-                    </span>
-                  </div>
-                  <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(0, 229, 255, 0.3) 0%, rgba(0, 229, 255, 0) 100%)' }} />
-                </div>
-
-                <div className="team-member-card" style={{ padding: '35px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(0, 229, 255, 0.25)', boxShadow: '0 0 20px rgba(0, 229, 255, 0.08)' }}>
-                  <div className="team-card-corners" />
-                  <Cpu size={36} style={{ color: '#00e5ff', marginBottom: '12px', display: 'inline-block' }} />
-                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.5rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 10px 0' }}>Coming soon....</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                    Our top-tier Platinum partners and main title sponsors are currently being finalized. Stay tuned for our primary ecosystem announcements!
-                  </p>
-                </div>
-              </div>
-
-              {/* GOLD SPONSORS */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                  <div style={{ padding: '6px 16px', background: 'rgba(255, 183, 3, 0.12)', border: '1px solid rgba(255, 183, 3, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <Award size={18} style={{ color: '#ffb703' }} />
-                    <span style={{ fontFamily: 'var(--font-display)', color: '#ffb703', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      GOLD SPONSORS
-                    </span>
-                  </div>
-                  <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
-                </div>
-
-                <div className="team-member-card gold" style={{ padding: '35px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
-                  <div className="team-card-corners" />
-                  <Cpu size={36} className="glow-text-gold" style={{ marginBottom: '12px', display: 'inline-block' }} />
-                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.5rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 10px 0' }}>Coming soon....</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                    Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
-                  </p>
-                </div>
-                 {/* OFFICIAL PLATFORM PARTNERS */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                  <div style={{ padding: '6px 16px', background: 'rgba(55, 112, 255, 0.15)', border: '1px solid rgba(55, 112, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <Award size={18} style={{ color: '#3770FF' }} />
-                    <span style={{ fontFamily: 'var(--font-display)', color: '#3770FF', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      OFFICIAL PLATFORM PARTNERS
-                    </span>
-                  </div>
-                  <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(55, 112, 255, 0.3) 0%, rgba(55, 112, 255, 0) 100%)' }} />
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                  {/* Devfolio Partner Card */}
-                  <a 
-                    href="https://fusionix-1.devfolio.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-member-card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '35px 20px',
-                      background: '#0F172A',
-                      border: '1px solid rgba(55, 112, 255, 0.6)',
-                      borderRadius: '8px',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease',
-                      boxShadow: '0 0 20px rgba(55, 112, 255, 0.25)',
-                    }}
-                  >
-                    <div className="team-card-corners" />
-                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-                      <img 
-                        src={devfolioLogo} 
-                        alt="Devfolio Logo" 
-                        style={{ height: '40px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                      />
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                      DEVFOLIO
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                      HACKATHON PLATFORM PARTNER
-                    </span>
-                  </a>
-
-                  {/* Unstop Partner Card */}
-                  <a 
-                    href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="team-member-card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '35px 20px',
-                      background: 'rgba(15, 23, 42, 0.65)',
-                      border: '1px solid rgba(28, 73, 194, 0.45)',
-                      borderRadius: '6px',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease',
-                      boxShadow: '0 0 15px rgba(28, 73, 194, 0.15)',
-                    }}
-                  >
-                    <div className="team-card-corners" />
-                    <div style={{ height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-                      <img 
-                        src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
-                        alt="Unstop" 
-                        referrerPolicy="no-referrer"
-                        style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                      />
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                      UNSTOP
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                      OFFICIAL REGISTRATION PARTNER
-                    </span>
-                  </a>
-                </div>
-              </div>             </div>
-            </div>
+            <SponsorsGrid />
 
             <div style={{ marginTop: '50px', textAlign: 'center', background: 'rgba(0, 0, 0, 0.25)', border: '1px solid rgba(0, 255, 102, 0.1)', borderRadius: '8px', padding: '30px' }}>
               <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.2rem', marginBottom: '8px' }}>INTERESTED IN COLLABORATING WITH FUSIONIX?</h4>
@@ -2645,139 +2738,7 @@ export default function App() {
             <h3 className="collection-main-title" style={{ fontSize: '2rem' }}>OUR SPONSORS & PARTNERS</h3>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '45px', maxWidth: '1100px', margin: '0 auto' }}>
-            {/* PLATINUM SPONSORS */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ padding: '6px 16px', background: 'rgba(0, 229, 255, 0.12)', border: '1px solid rgba(0, 229, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={18} style={{ color: '#00e5ff' }} />
-                  <span style={{ fontFamily: 'var(--font-display)', color: '#00e5ff', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                    PLATINUM SPONSORS
-                  </span>
-                </div>
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(0, 229, 255, 0.3) 0%, rgba(0, 229, 255, 0) 100%)' }} />
-              </div>
-
-              <div className="team-member-card" style={{ padding: '30px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(0, 229, 255, 0.25)', boxShadow: '0 0 20px rgba(0, 229, 255, 0.08)' }}>
-                <div className="team-card-corners" />
-                <Cpu size={32} style={{ color: '#00e5ff', marginBottom: '10px', display: 'inline-block' }} />
-                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.4rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 8px 0' }}>Coming soon....</h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Our top-tier Platinum partners and main title sponsors are currently being finalized. Stay tuned for our primary ecosystem announcements!
-                </p>
-              </div>
-            </div>
-
-            {/* GOLD SPONSORS */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ padding: '6px 16px', background: 'rgba(255, 183, 3, 0.12)', border: '1px solid rgba(255, 183, 3, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={18} style={{ color: '#ffb703' }} />
-                  <span style={{ fontFamily: 'var(--font-display)', color: '#ffb703', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                    GOLD SPONSORS
-                  </span>
-                </div>
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255, 183, 3, 0.3) 0%, rgba(255, 183, 3, 0) 100%)' }} />
-              </div>
-
-              <div className="team-member-card gold" style={{ padding: '30px 25px', textAlign: 'center', background: 'rgba(5, 15, 8, 0.6)', border: '1px solid rgba(255, 183, 3, 0.3)', boxShadow: '0 0 20px rgba(255, 183, 3, 0.08)' }}>
-                <div className="team-card-corners" />
-                <Cpu size={32} className="glow-text-gold" style={{ marginBottom: '10px', display: 'inline-block' }} />
-                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.4rem', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 8px 0' }}>Coming soon....</h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0, maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Gold tier hardware and software solution facilitators are being integrated. Details will be revealed shortly.
-                </p>
-              </div>
-            </div>
-
-            {/* OFFICIAL PLATFORM PARTNERS */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ padding: '6px 16px', background: 'rgba(55, 112, 255, 0.15)', border: '1px solid rgba(55, 112, 255, 0.4)', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={18} style={{ color: '#3770FF' }} />
-                  <span style={{ fontFamily: 'var(--font-display)', color: '#3770FF', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>
-                    OFFICIAL PLATFORM PARTNERS
-                  </span>
-                </div>
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(55, 112, 255, 0.3) 0%, rgba(55, 112, 255, 0) 100%)' }} />
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                {/* Devfolio Partner Card */}
-                <a 
-                  href="https://fusionix-1.devfolio.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="team-member-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '30px 20px',
-                    background: '#0F172A',
-                    border: '1px solid rgba(55, 112, 255, 0.6)',
-                    borderRadius: '8px',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 20px rgba(55, 112, 255, 0.25)',
-                  }}
-                >
-                  <div className="team-card-corners" />
-                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-                    <img 
-                      src={devfolioLogo} 
-                      alt="Devfolio Logo" 
-                      style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                    />
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                    DEVFOLIO
-                  </span>
-                  <span style={{ fontSize: '0.78rem', color: '#3770FF', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                    HACKATHON PLATFORM PARTNER
-                  </span>
-                </a>
-
-                {/* Unstop Partner Card */}
-                <a 
-                  href="https://unstop.com/hackathons/fusionix-2026-university-of-engineering-and-management-kolkata-1727790"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="team-member-card"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '30px 20px',
-                    background: 'rgba(15, 23, 42, 0.65)',
-                    border: '1px solid rgba(28, 73, 194, 0.45)',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 15px rgba(28, 73, 194, 0.15)',
-                  }}
-                >
-                  <div className="team-card-corners" />
-                  <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-                    <img 
-                      src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/logos/white/Unstop-Logo-White-Medium.png" 
-                      alt="Unstop" 
-                      referrerPolicy="no-referrer"
-                      style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }} 
-                    />
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 900, color: '#fff', letterSpacing: '1.5px', marginBottom: '4px' }}>
-                    UNSTOP
-                  </span>
-                  <span style={{ fontSize: '0.78rem', color: '#3b82f6', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>
-                    OFFICIAL REGISTRATION PARTNER
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <SponsorsGrid />
 
           {/* Action Trigger for Co-Sponsors Page */}
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
